@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -157,8 +157,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0356707f6e682b3408865297075d67c2
-      internalID: 1715906294
+      spriteID: 2b42421c53bea9f4dbc737e5214b0a36
+      internalID: 1155747236
       vertices: []
       indices: 
       edges: []
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93549e8cbc69f5847a9f466c6fec419f
-      internalID: 2096351947
+      spriteID: 2cc7972d91da4684e922f8fa0c4b25f5
+      internalID: 52498405
       vertices: []
       indices: 
       edges: []
@@ -195,8 +195,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pumpkin_16_0: 1715906294
-      Pumpkin_16_1: 2096351947
+      Pumpkin_16_0: 1155747236
+      Pumpkin_16_1: -1512343374
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
