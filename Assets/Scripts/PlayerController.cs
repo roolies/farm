@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
     private InputAction InteractAction;
+    private InputAction ExitAction;
 
-    public bool Game1 = true;
+    public bool TriggerToutched = false;
 
-    public bool TriggerToutched = false; 
+    public bool TomatoToutched = false;
+    public bool AppleToutched = false;
+
+
 
     void Awake()
     {
@@ -36,15 +40,9 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
 
         InteractAction = playerInput.actions["Interact"];
+        ExitAction = playerInput.actions["ExitMiniGame"];
 
-       //if (InteractAction.triggered && TriggerToutched)
-       //{
-       //
-       //    Debug.Log("Interacted");
-       //    //Minigame1.SetActive(true);
-       //
-       //}
-       //else { Debug.Log("Not Interatced"); }
+
     }
 
  
@@ -53,12 +51,18 @@ public class PlayerController : MonoBehaviour
     {
         InteractAction.performed += _ => Game1Start();
         InteractAction.canceled += _ => Game1Stop();
+
+        ExitAction.performed += _ => MiniGameExitStart();
+        ExitAction.canceled += _ => MiniGameExitStop();
     }
     
     private void OnDisable()
     {
         InteractAction.performed -= _ => Game1Start();
         InteractAction.canceled -= _ => Game1Stop();
+
+        ExitAction.performed -= _ => MiniGameExitStart();
+        ExitAction.canceled -= _ => MiniGameExitStop();
     }
 
 
@@ -83,6 +87,18 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void MiniGameExitStart()
+    {
+        Debug.Log("Q pressed");
+        Minigame1.SetActive(false);
+        FarmArea.SetActive(true);
+    }
+    public void MiniGameExitStop()
+    {
+
+    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -104,14 +120,28 @@ public class PlayerController : MonoBehaviour
        {
             TriggerToutched = true;
             Debug.Log("Trigger Entered");
-
-            //if (InteractAction.triggered)
-            //{
-            //    //Game1Start();
-            //    Debug.Log("Trigger interacted");
-            //}
              
         }
+
+        if (collision.tag == "Tomato")
+        {
+            Debug.Log("Tomato Interacted");
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "Apple")
+        {
+            Debug.Log("Apple Interacted");
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.tag == "BadFruit")
+        {
+            Debug.Log("Apple Interacted");
+            Destroy(collision.gameObject);
+        }
+
+
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -122,8 +152,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("trigger Exit");
         }
         
-        //TriggerToutched = false;
-        //Debug.Log("trigger not touched");
+       
     }
 
 
