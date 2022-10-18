@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 1f;
-    Vector2 moveInput = Vector2.zero;
+    public Vector2 moveInput = Vector2.zero;
     Rigidbody2D rb;
     public GameObject Minigame1;
     public GameObject FarmArea;
@@ -22,8 +22,16 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Minigame1.SetActive(false);
-        FarmArea.SetActive(true);
+        
+        if(Minigame1 != null)
+        {
+            Minigame1.SetActive(false);
+        }
+
+        if(FarmArea != null)
+        {
+            FarmArea.SetActive(true);
+        }
 
         playerInput = GetComponent<PlayerInput>();
 
