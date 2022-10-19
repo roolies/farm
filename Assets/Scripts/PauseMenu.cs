@@ -1,44 +1,54 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using FarmGame;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PauseMenu : MonoBehaviour
 {
     private FamerGame playerInput;
-    private bool isPaused = false;
-    [SerializeField]
-    private GameObject pauseMenuUI;
-
-    void Awake()
-    {
-        playerInput = new FamerGame();
-
-    }
-
-    void OnEnable()
-    {
-        playerInput.Enable();
-    }
-
-    void OnDisable()
-    {
-        playerInput.Disable();
-    }
+    private static bool isPaused = false;
+    public GameObject pauseMenuUI;
 
     void Update()
     {
-        if(playerInput.Player.PauseGame.triggered && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Tried to pause game");
-            isPaused = true;
-            Time.timeScale = 0f;
-            pauseMenuUI.SetActive(true);
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
-        else if (playerInput.Player.PauseGame.triggered && isPaused)
-        {
-            isPaused = false;
-            Time.timeScale = 1f;
-            pauseMenuUI.SetActive(false);
-        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        isPaused = false;
+        Time.timeScale = 1f;
+        playerInput.Enable();
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        isPaused = true;
+        Time.timeScale = 0f;
+        playerInput.Disable();
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting");
+        Application.Quit();
     }
 }
