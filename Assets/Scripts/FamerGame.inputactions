@@ -811,6 +811,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Oven",
+            "id": "1aee53e2-4a4b-421d-87e0-846b0717f4db",
+            "actions": [
+                {
+                    "name": "StopIndicator",
+                    "type": "Button",
+                    "id": "638e3c82-8368-4fd8-81fc-f13f055798ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3c6942f4-b9d9-4da2-a888-c6189090449e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StopIndicator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
