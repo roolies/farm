@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5002412181133721631}
   m_Layer: 0
   m_Name: Pumpkin_16_0
-  m_TagString: Apple
+  m_TagString: Pumpkin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1396888167721829566
 SpriteRenderer:

@@ -2,11 +2,12 @@
 {
     public enum Ingredients
     {
-        eggs = 0,
-        tomatoes,
-        carrots,
-        turkey,
-        apples,
-        unknown
+        Eggs = 0,
+        Tomatoes,
+        Carrots,
+        Turkey,
+        Pumpkins,
+        Apples,
+        Unknown
     }
 }

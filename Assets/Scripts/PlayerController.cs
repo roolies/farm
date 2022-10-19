@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game 2 interacted");
             Minigame2.SetActive(true);
             FarmArea.SetActive(false);
+            currentGame.StartMiniGame();
         }
 
     }
@@ -108,8 +109,8 @@ public class PlayerController : MonoBehaviour
         FarmArea.SetActive(true);
         Minigame1.SetActive(false);
         Minigame2.SetActive(false);
-        //currentGame.EndMiniGame();
-        //currentGame = null;
+        currentGame.EndMiniGame();
+        currentGame = null;
         KillTrigger.SetActive(true);
     }
     public void MiniGameExitStop()
@@ -139,13 +140,14 @@ public class PlayerController : MonoBehaviour
         {
             TriggerToutched = true;
             Debug.Log("MiniGame 1 toutched");
+            currentGame = collision.gameObject.GetComponent<CollectionGame>();
         }
 
         if (collision.tag == "MiniGame2")
         {
             MiniGame2Toutched = true;
             Debug.Log("MiniGame 2 toutched");
-
+            currentGame = collision.gameObject.GetComponent<CollectionGame>();
         }
 
 
@@ -163,7 +165,6 @@ public class PlayerController : MonoBehaviour
         {
             MiniGame2Toutched = false;
             Debug.Log("MiniGame 2 toutched");
-
         }
 
 
@@ -180,6 +181,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag.Equals("Apple"))
         {
             Debug.Log("Apple Interacted");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Pumpkin"))
+        {
+            Debug.Log("Pumpkin Interacted");
             Destroy(other.gameObject);
         }
 
