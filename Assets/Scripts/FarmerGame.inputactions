@@ -1,5 +1,5 @@
 {
-    "name": "FamerGame",
+    "name": "FarmerGame",
     "maps": [
         {
             "name": "Player",
@@ -824,6 +824,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitOven",
+                    "type": "Button",
+                    "id": "2b64d274-c43b-4afb-9e06-84e88b7e611c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -835,6 +844,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "StopIndicator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27a00cda-4198-4102-91e8-38f525e42ea0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "StopIndicator",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7891c493-db24-4f1c-bff2-0cb3c0fd18d2",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ExitOven",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec6d7000-17c8-4a3b-9922-5ff747d71933",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ExitOven",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
