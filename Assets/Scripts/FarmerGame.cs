@@ -73,7 +73,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""d06c9fdd-fdf8-4a38-a012-144170fd8420"",
                     ""expectedControlType"": ""Button"",
@@ -354,7 +354,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -365,7 +365,18 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79e01b77-205a-4a4e-9c03-04ffaa39b6cf"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1028,7 +1039,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ExitMiniGame = m_Player.FindAction("ExitMiniGame", throwIfNotFound: true);
-        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1109,7 +1120,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ExitMiniGame;
-    private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_PauseGame;
     public struct PlayerActions
     {
         private @FarmerGame m_Wrapper;
@@ -1119,7 +1130,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ExitMiniGame => m_Wrapper.m_Player_ExitMiniGame;
-        public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1144,9 +1155,9 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
                 @ExitMiniGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitMiniGame;
                 @ExitMiniGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitMiniGame;
                 @ExitMiniGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExitMiniGame;
-                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @PauseGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1166,9 +1177,9 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
                 @ExitMiniGame.started += instance.OnExitMiniGame;
                 @ExitMiniGame.performed += instance.OnExitMiniGame;
                 @ExitMiniGame.canceled += instance.OnExitMiniGame;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -1371,7 +1382,7 @@ public partial class @FarmerGame : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnExitMiniGame(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

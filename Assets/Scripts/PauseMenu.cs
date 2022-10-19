@@ -10,9 +10,23 @@ public class PauseMenu : MonoBehaviour
     private static bool isPaused = false;
     public GameObject pauseMenuUI;
 
+    void Awake()
+    {
+        playerInput = new FamerGame();
+    }
+
+    void OnEnable()
+    {
+        playerInput.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerInput.Disable();
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (playerInput.Player.PauseGame.triggered)
         {
             if (isPaused)
             {
