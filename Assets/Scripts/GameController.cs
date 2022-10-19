@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace FarmGame
 {
     public class GameController : MonoBehaviour
     {
+        private PlayerData playerData { get; set; }
         private GameObject player { get; set; }
         private GameObject kitchenSpawn { get; set; }
         private bool farmPhase { get; set; }
@@ -15,6 +17,8 @@ namespace FarmGame
 
         [SerializeField] private float timerStartValue;
         [SerializeField] private Text timerText;
+        [SerializeField] private Text inventoryText;
+        [SerializeField] private GameObject inventoryHUD;
 
         void Start()
         {
@@ -22,6 +26,7 @@ namespace FarmGame
             cookingPhase = false;
             timer = timerStartValue;
             player = GameObject.FindGameObjectWithTag("Player");
+            playerData = FindObjectOfType<PlayerData>();
             kitchenSpawn = GameObject.FindGameObjectWithTag("KitchenSpawn");
         }
 
@@ -34,15 +39,35 @@ namespace FarmGame
             }
             else if(timer <= 0 && farmPhase == true)
             {
-                farmPhase = !farmPhase;
-                cookingPhase = !cookingPhase;
-                player.transform.position = kitchenSpawn.transform.position;
-                timer = timerStartValue;
+                BeginCooking();
             }
             else
             {
                 timer = 0;
             }
+        }
+
+        private void BeginCooking()
+        {
+            farmPhase = !farmPhase;
+            cookingPhase = !cookingPhase;
+            player.transform.position = kitchenSpawn.transform.position;
+            timer = timerStartValue;
+            inventoryHUD.SetActive(true);
+            inventoryText.text = ListInventory();
+        }
+
+        private string ListInventory()
+        {
+            string iList = "";
+
+            for (int i = 0; i < playerData.Inventory.Length - 1; i++)
+            {
+                string name = Enum.GetName(typeof(Ingredients), i);
+                iList += $"{name}: {playerData.Inventory[i]}\n";
+            }
+
+            return iList;
         }
     }
 }

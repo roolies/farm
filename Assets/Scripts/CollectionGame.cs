@@ -85,7 +85,7 @@ namespace FarmGame
 
         private void PrintInventory()
         {
-            for (int i = 0; i < player.Inventory.Length; i++)
+            for (int i = 0; i < player.Inventory.Length - 1; i++)
             {
                 string name = Enum.GetName(typeof(Ingredients), i);
                 Debug.Log($"{name}: {player.Inventory[i]}");
