@@ -208,7 +208,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        if (other.gameObject.tag.Equals("Turkey"))
+        {
+            Debug.Log("Turkey Interacted");
+            Destroy(other.gameObject);
+        }
 
+        currentGame.AddIngredient();
     }
 
 

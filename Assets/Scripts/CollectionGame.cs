@@ -11,6 +11,7 @@ namespace FarmGame
     {
         [SerializeField] private string ingredientType;
         private static PlayerData player { get; set; }
+        private PlayerController playerController { get; set; }
         private int numCollected { get; set; }
         private bool isPlaying { get; set; }
         [SerializeField ]private float initialGameTime;
@@ -19,37 +20,36 @@ namespace FarmGame
         void Awake()
         {
             player = FindObjectOfType<PlayerData>();
+            playerController = FindObjectOfType<PlayerController>();
             //player = controller.playerData;
             gameTimer = initialGameTime;
         }
 
         private void Update()
         {
-            if(isPlaying == true)
-            {
-                gameTimer -= Time.deltaTime;
-                if(gameTimer <= 0)
-                {
-                    EndMiniGame();
-                }
-            }
+            //if(isPlaying == true)
+            //{
+            //    gameTimer -= Time.deltaTime;
+            //    if(gameTimer <= 0)
+            //    {
+            //        playerController.MiniGameExitStart();
+            //        //EndMiniGame();
+            //    }
+            //}
         }
 
         IEnumerator PlayMinigame()
         {
             Ingredients ingredient = ToIngredient(ingredientType);
-            //gameUI.SetActive(true);
-            //ingredientText.text = $"Collect the {ingredientType}!";
             Debug.Log("PLAYING");
             Debug.Log(isPlaying);
 
             yield return new WaitWhile(() => isPlaying);
 
             player.Inventory[(int)ingredient] += numCollected;
-            // gameUI.SetActive(false);
             Debug.Log("SCORING");
             Debug.Log(isPlaying);
-            PrintInventory();
+            //PrintInventory();
 
             yield break;
         }
@@ -74,6 +74,7 @@ namespace FarmGame
         public void EndMiniGame()
         {
             Debug.Log("ENDED");
+            
             isPlaying = false;
             gameTimer = initialGameTime;
         }
