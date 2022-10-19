@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmGame
 {
-    internal class PlayerData : MonoBehaviour
+    public class PlayerData : MonoBehaviour
     {
         public int Score { get; set; } = 0;
 

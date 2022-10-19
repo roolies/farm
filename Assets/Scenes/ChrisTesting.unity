@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 170318556}
   - component: {fileID: 170318555}
   - component: {fileID: 170318554}
+  - component: {fileID: 170318557}
   m_Layer: 0
   m_Name: MiniGame Accsess point 1
   m_TagString: MiniGame1
@@ -234,6 +235,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170318557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170318552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842da5dc053eee84d96f7c4c96dd0c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientType: apples
+  initialGameTime: 300
 --- !u!1 &440009721
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +307,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 2}
   m_EdgeRadius: 0
+--- !u!1 &514899649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514899651}
+  - component: {fileID: 514899650}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &514899650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514899649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9d7ad4108630b44b9004decc44d9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStartValue: 300
+--- !u!4 &514899651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514899649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07581599, y: 0.11176953, z: -0.04569463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522440178
 GameObject:
   m_ObjectHideFlags: 0
@@ -15016,6 +15076,7 @@ GameObject:
   - component: {fileID: 1027972601}
   - component: {fileID: 1027972600}
   - component: {fileID: 1027972599}
+  - component: {fileID: 1027972603}
   - component: {fileID: 1027972598}
   - component: {fileID: 1027972597}
   m_Layer: 0
@@ -15181,6 +15242,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027972603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027972596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df02175453db1046ae104fa75656544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1101696686
 GameObject:
   m_ObjectHideFlags: 0

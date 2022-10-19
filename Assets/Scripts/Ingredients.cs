@@ -6,6 +6,7 @@
         tomatoes,
         carrots,
         turkey,
+        apples,
         unknown
     }
 }

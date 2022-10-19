@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FarmGame;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public GameObject Minigame1;
     public GameObject FarmArea;
+    private CollectionGame currentGame = null;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacted");
             Minigame1.SetActive(true);
             FarmArea.SetActive(false);
-
+            currentGame.StartMiniGame();
         }
     }
     
@@ -92,6 +94,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Q pressed");
         Minigame1.SetActive(false);
         FarmArea.SetActive(true);
+        currentGame.EndMiniGame();
+        currentGame = null;
     }
     public void MiniGameExitStop()
     {
@@ -116,11 +120,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-       if (collision.tag == "MiniGame1")
-       {
+        if (collision.tag == "MiniGame1")
+        {
             TriggerToutched = true;
             Debug.Log("Trigger Entered");
-             
+            currentGame = collision.gameObject.GetComponent<CollectionGame>();
         }
 
         if (collision.tag == "Tomato")
@@ -132,6 +136,7 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Apple")
         {
             Debug.Log("Apple Interacted");
+            currentGame.AddIngredient();
             Destroy(collision.gameObject);
         }
 
@@ -150,6 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             TriggerToutched = false;
             Debug.Log("trigger Exit");
+            
         }
         
        

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FarmGame
 {
-    internal class GameController : MonoBehaviour
+    public class GameController : MonoBehaviour
     {
         public PlayerData playerData { get; private set; }
 
@@ -19,6 +19,7 @@ namespace FarmGame
             farmPhase = true;
             cookingPhase = false;
             timer = timerStartValue;
+            playerData = FindObjectOfType<PlayerData>();
             //StartCoroutine(GameLoop());
         }
 
