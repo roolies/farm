@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public Vector2 moveInput = Vector2.zero;
     Rigidbody2D rb;
     public GameObject Minigame1;
+    public GameObject Minigame2;
+    public GameObject KillTrigger;
+
     public GameObject FarmArea;
     private CollectionGame currentGame = null;
 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private InputAction ExitAction;
 
     public bool TriggerToutched = false;
+    public bool MiniGame2Toutched = false;
 
     public bool TomatoToutched = false;
     public bool AppleToutched = false;
@@ -29,15 +33,15 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         
-        if(Minigame1 != null)
-        {
-            Minigame1.SetActive(false);
-        }
-
-        if(FarmArea != null)
-        {
-            FarmArea.SetActive(true);
-        }
+       //if(Minigame1 != null)
+       //{
+       //    Minigame1.SetActive(false);
+       //}
+       //
+       //if(FarmArea != null)
+       //{
+       //    FarmArea.SetActive(true);
+       //}
 
         playerInput = GetComponent<PlayerInput>();
 
@@ -78,6 +82,14 @@ public class PlayerController : MonoBehaviour
             FarmArea.SetActive(false);
             currentGame.StartMiniGame();
         }
+
+        if (MiniGame2Toutched == true)
+        {
+            Debug.Log("Game 2 interacted");
+            Minigame2.SetActive(true);
+            FarmArea.SetActive(false);
+        }
+
     }
     
     public void Game1Stop()
@@ -92,14 +104,17 @@ public class PlayerController : MonoBehaviour
     public void MiniGameExitStart()
     {
         Debug.Log("Q pressed");
-        Minigame1.SetActive(false);
+        KillTrigger.SetActive(true);
         FarmArea.SetActive(true);
-        currentGame.EndMiniGame();
-        currentGame = null;
+        Minigame1.SetActive(false);
+        Minigame2.SetActive(false);
+        //currentGame.EndMiniGame();
+        //currentGame = null;
+        KillTrigger.SetActive(true);
     }
     public void MiniGameExitStop()
     {
-
+        KillTrigger.SetActive(false);
     }
 
 
@@ -123,27 +138,14 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "MiniGame1")
         {
             TriggerToutched = true;
-            Debug.Log("Trigger Entered");
-            currentGame = collision.gameObject.GetComponent<CollectionGame>();
+            Debug.Log("MiniGame 1 toutched");
         }
 
-        if (collision.tag == "Tomato")
+        if (collision.tag == "MiniGame2")
         {
-            Debug.Log("Tomato Interacted");
-            Destroy(collision.gameObject);
-        }
+            MiniGame2Toutched = true;
+            Debug.Log("MiniGame 2 toutched");
 
-        if (collision.tag == "Apple")
-        {
-            Debug.Log("Apple Interacted");
-            currentGame.AddIngredient();
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.tag == "BadFruit")
-        {
-            Debug.Log("Apple Interacted");
-            Destroy(collision.gameObject);
         }
 
 
@@ -155,10 +157,51 @@ public class PlayerController : MonoBehaviour
         {
             TriggerToutched = false;
             Debug.Log("trigger Exit");
-            
         }
-        
-       
+
+        if (collision.tag == "MiniGame2")
+        {
+            MiniGame2Toutched = false;
+            Debug.Log("MiniGame 2 toutched");
+
+        }
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag.Equals("Tomato"))
+        {
+            Debug.Log("Tomato Interacted");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Apple"))
+        {
+            Debug.Log("Apple Interacted");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("BadFruit"))
+        {
+            Debug.Log("Apple Interacted");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Egg"))
+        {
+            Debug.Log("Tomato Interacted");
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("BadEgg"))
+        {
+            Debug.Log("Tomato Interacted");
+            Destroy(other.gameObject);
+        }
+
+
     }
 
 
