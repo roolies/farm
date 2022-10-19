@@ -10,16 +10,11 @@ namespace FarmGame
     public class CollectionGame : MonoBehaviour
     {
         [SerializeField] private string ingredientType;
-        //public static GameController controller { get; private set; }
         private static PlayerData player { get; set; }
         private int numCollected { get; set; }
         private bool isPlaying { get; set; }
         [SerializeField ]private float initialGameTime;
         private float gameTimer { get; set; }
-
-        //[Header("Minigame UI")]
-        //[SerializeField] private GameObject gameUI;
-        //[SerializeField] private Text ingredientText;
 
         void Awake()
         {
@@ -61,7 +56,7 @@ namespace FarmGame
 
         private static Ingredients ToIngredient(string ingredientString)
         {
-            return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.unknown;
+            return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.Unknown;
         }
 
         public void AddIngredient()

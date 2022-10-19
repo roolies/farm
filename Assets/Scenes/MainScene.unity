@@ -541,7 +541,6 @@ GameObject:
   - component: {fileID: 372825297}
   - component: {fileID: 372825300}
   - component: {fileID: 372825299}
-  - component: {fileID: 372825298}
   m_Layer: 0
   m_Name: MiniGame 2
   m_TagString: MiniGame2
@@ -564,20 +563,6 @@ Transform:
   m_Father: {fileID: 1339686190}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &372825298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372825296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8537c411953e319469888e368a7304ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Apple: {fileID: 1589458412}
-  spawnRate: 2
 --- !u!61 &372825299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -667,7 +652,6 @@ GameObject:
   - component: {fileID: 496852712}
   - component: {fileID: 496852714}
   - component: {fileID: 496852713}
-  - component: {fileID: 496852715}
   m_Layer: 0
   m_Name: MiniGame 1
   m_TagString: MiniGame1
@@ -768,20 +752,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &496852715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496852711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8537c411953e319469888e368a7304ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Apple: {fileID: 1589458412}
-  spawnRate: 2
 --- !u!1 &809372617
 GameObject:
   m_ObjectHideFlags: 0
