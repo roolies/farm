@@ -1,52 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FarmGame
 {
     public class GameController : MonoBehaviour
     {
-        public PlayerData playerData { get; private set; }
-
+        private GameObject player { get; set; }
+        private GameObject kitchenSpawn { get; set; }
         private bool farmPhase { get; set; }
         private bool cookingPhase { get; set; }
         private float timer { get; set; }
 
         [SerializeField] private float timerStartValue;
+        [SerializeField] private Text timerText;
 
         void Start()
         {
             farmPhase = true;
             cookingPhase = false;
             timer = timerStartValue;
-            playerData = FindObjectOfType<PlayerData>();
-            //StartCoroutine(GameLoop());
+            player = GameObject.FindGameObjectWithTag("Player");
+            kitchenSpawn = GameObject.FindGameObjectWithTag("KitchenSpawn");
         }
 
         void Update()
         {
-            timer -= Time.deltaTime;
-            if(timer <= 0)
+            timerText.text = timer.ToString("F1");
+            if(timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else if(timer <= 0 && farmPhase == true)
             {
                 farmPhase = !farmPhase;
                 cookingPhase = !cookingPhase;
+                player.transform.position = kitchenSpawn.transform.position;
                 timer = timerStartValue;
             }
-        }
-
-        IEnumerator GameLoop()
-        {
-            while(farmPhase == true)
+            else
             {
-
+                timer = 0;
             }
-
-            while(cookingPhase == true)
-            {
-
-            }
-
-            yield break;
         }
     }
 }
