@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 336839082}
   - component: {fileID: 336839081}
   m_Layer: 5
-  m_Name: back
+  m_Name: ctrlBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 570900161}
   - component: {fileID: 570900160}
   m_Layer: 5
-  m_Name: back
+  m_Name: credBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2379,6 +2379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9565bff2e4d4a24a8a850e02a57741c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultBtn: {fileID: 919058135}
+  ctrlBackBtn: {fileID: 0}
+  creditBackBtn: {fileID: 0}
 --- !u!222 &1137445107
 CanvasRenderer:
   m_ObjectHideFlags: 0
