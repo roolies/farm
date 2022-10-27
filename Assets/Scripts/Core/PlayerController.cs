@@ -27,7 +27,16 @@ public class PlayerController : MonoBehaviour
     public bool TomatoToutched = false;
     public bool AppleToutched = false;
 
+    //NewCode
+    private GameObject MiniGame2Spawn { get; set; }
+    public GameObject FarmerSprite;
+    public GameObject BasketSprite;
 
+    //NewCode
+    void Start()
+    {
+        MiniGame2Spawn = GameObject.FindGameObjectWithTag("Game2Spawn");
+    }
 
     void Awake()
     {
@@ -47,7 +56,8 @@ public class PlayerController : MonoBehaviour
 
         InteractAction = playerInput.actions["Interact"];
         ExitAction = playerInput.actions["ExitMiniGame"];
-
+        //NewCode
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
     }
 
@@ -89,6 +99,11 @@ public class PlayerController : MonoBehaviour
             Minigame2.SetActive(true);
             FarmArea.SetActive(false);
             currentGame.StartMiniGame();
+            //NewCode
+            rb.transform.position = MiniGame2Spawn.transform.position;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            FarmerSprite.SetActive(false);
+            BasketSprite.SetActive(true);
         }
 
     }
@@ -112,6 +127,11 @@ public class PlayerController : MonoBehaviour
         currentGame.EndMiniGame();
         currentGame = null;
         KillTrigger.SetActive(true);
+
+        //NewCode
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        FarmerSprite.SetActive(true);
+        BasketSprite.SetActive(false);
     }
     public void MiniGameExitStop()
     {
