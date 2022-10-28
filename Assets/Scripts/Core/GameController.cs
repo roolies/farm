@@ -10,7 +10,6 @@ namespace FarmGame
     {
         private PlayerData playerData { get; set; }
         private GameObject player { get; set; }
-        private GameObject kitchenSpawn { get; set; }
         private bool farmPhase { get; set; }
         private bool cookingPhase { get; set; }
         private float timer { get; set; }
@@ -18,7 +17,7 @@ namespace FarmGame
         [SerializeField] private float timerStartValue;
         [SerializeField] private Text timerText;
         [SerializeField] private Text inventoryText;
-        [SerializeField] private GameObject inventoryHUD;
+        [SerializeField] private GameObject kitchenHUD;
 
         void Start()
         {
@@ -51,9 +50,8 @@ namespace FarmGame
         {
             farmPhase = !farmPhase;
             cookingPhase = !cookingPhase;
-            player.transform.position = kitchenSpawn.transform.position;
             timer = timerStartValue;
-            inventoryHUD.SetActive(true);
+            kitchenHUD.SetActive(true);
             inventoryText.text = ListInventory();
         }
 
