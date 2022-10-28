@@ -25,19 +25,6 @@ namespace FarmGame
             gameTimer = initialGameTime;
         }
 
-        private void Update()
-        {
-            //if(isPlaying == true)
-            //{
-            //    gameTimer -= Time.deltaTime;
-            //    if(gameTimer <= 0)
-            //    {
-            //        playerController.MiniGameExitStart();
-            //        //EndMiniGame();
-            //    }
-            //}
-        }
-
         IEnumerator PlayMinigame()
         {
             Ingredients ingredient = ToIngredient(ingredientType);

@@ -26,7 +26,6 @@ namespace FarmGame
             timer = timerStartValue;
             player = GameObject.FindGameObjectWithTag("Player");
             playerData = FindObjectOfType<PlayerData>();
-            kitchenSpawn = GameObject.FindGameObjectWithTag("KitchenSpawn");
         }
 
         void Update()
