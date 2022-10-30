@@ -10,11 +10,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private Button defaultBtn, ctrlBackBtn, creditBackBtn;
 
+    [SerializeField]
+    private GameObject ctrlScreen, creditScreen;
+
     public MainMenu()
     {
         defaultBtn = null;
         ctrlBackBtn = null;
         creditBackBtn = null;
+
+        ctrlScreen = null;
+        creditScreen = null;
     }
 
     void OnApplicationFocus(bool hasFocus)
@@ -24,6 +30,18 @@ public class MainMenu : MonoBehaviour
             defaultBtn.Select();
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        if(creditScreen.activeInHierarchy)
+        {
+            creditBackBtn.Select();
+        }
+        else if(ctrlScreen.activeInHierarchy)
+        {
+            ctrlBackBtn.Select();
+        }
     }
 
     public void PlayGame()
