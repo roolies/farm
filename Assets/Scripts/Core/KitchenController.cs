@@ -76,7 +76,7 @@ public class KitchenController : MonoBehaviour
             Ping = false;
             game.gameOutput += SendDishScore;
             CamController.gameTransform = game.gameObject.transform;
-            CamController.FocusOnGame();
+            CamController.followingPlayer = false;
             game.PlayGame();
             yield return new WaitUntil(() => Ping);
             game.gameOutput -= SendDishScore;
