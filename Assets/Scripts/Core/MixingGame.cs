@@ -7,7 +7,12 @@ public class MixingGame : KitchenGame
 {
     public override event EventHandler<int> gameOutput;
 
-    KitchenController controller = FindObjectOfType<KitchenController>();
+    KitchenController controller { get; set; }
+
+    private void Start()
+    {
+        controller = FindObjectOfType<KitchenController>();
+    }
 
     public override void PlayGame()
     {
@@ -17,6 +22,8 @@ public class MixingGame : KitchenGame
     public override IEnumerator Play()
     {
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+
+        ScoreGame();
         
         yield break;
     }

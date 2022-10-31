@@ -8,15 +8,15 @@ namespace FarmGame
 {
     public class GameController : MonoBehaviour
     {
-        private PlayerData playerData { get; set; }
-        private GameObject player { get; set; }
+        private PlayerData PlayerData { get; set; }
+        private GameObject Player { get; set; }
         private bool farmPhase { get; set; }
         private bool cookingPhase { get; set; }
         private float timer { get; set; }
 
         [SerializeField] private float timerStartValue;
         [SerializeField] private Text timerText;
-        [SerializeField] private Text inventoryText;
+        [SerializeField] public Text inventoryText;
         [SerializeField] private GameObject kitchenHUD;
 
         void Start()
@@ -24,8 +24,8 @@ namespace FarmGame
             farmPhase = true;
             cookingPhase = false;
             timer = timerStartValue;
-            player = GameObject.FindGameObjectWithTag("Player");
-            playerData = FindObjectOfType<PlayerData>();
+            Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerData = FindObjectOfType<PlayerData>();
         }
 
         void Update()
@@ -47,6 +47,7 @@ namespace FarmGame
 
         private void BeginCooking()
         {
+            RemoveControl();
             farmPhase = !farmPhase;
             cookingPhase = !cookingPhase;
             timer = timerStartValue;
@@ -54,14 +55,19 @@ namespace FarmGame
             inventoryText.text = ListInventory();
         }
 
-        private string ListInventory()
+        void RemoveControl()
+        {
+            Player.GetComponent<PlayerController>().enabled = false;
+        }
+
+        public string ListInventory()
         {
             string iList = "";
 
-            for (int i = 0; i < playerData.Inventory.Length - 1; i++)
+            for (int i = 0; i < PlayerData.Inventory.Length - 1; i++)
             {
                 string name = Enum.GetName(typeof(Ingredients), i);
-                iList += $"{name}: {playerData.Inventory[i]}\n";
+                iList += $"{name}: {PlayerData.Inventory[i]}\n";
             }
 
             return iList;
