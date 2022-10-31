@@ -9,12 +9,12 @@ public class CameraContoller : MonoBehaviour
 
     private Transform playerTransform { get; set; }
     public Transform gameTransform { get; set; }
-    private Camera camera { get; set;}
+    private Camera cam { get; set;}
     private bool followingPlayer { get; set;}
 
     private void Start()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
         followingPlayer = true;
     }
@@ -31,15 +31,15 @@ public class CameraContoller : MonoBehaviour
         }
     }
 
-    private void FocusOnPlayer()
+    public void FocusOnPlayer()
     {
         this.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -2f);
-        camera.orthographicSize = playerCamSize;
+        cam.orthographicSize = playerCamSize;
     }
 
-    private void FocusOnGame()
+    public void FocusOnGame()
     {
         this.transform.position = new Vector3(gameTransform.position.x, gameTransform.position.y, -2f);
-        camera.orthographicSize = gameCamSize;
+        cam.orthographicSize = gameCamSize;
     }
 }

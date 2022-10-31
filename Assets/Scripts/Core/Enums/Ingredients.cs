@@ -8,6 +8,7 @@
         Turkey,
         Pumpkins,
         Apples,
+        Potatoes,
         Unknown
     }
 }

@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KitchenGame : MonoBehaviour
+public abstract class KitchenGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract event EventHandler<int> gameOutput;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void PlayGame();
+
+    public abstract IEnumerator Play();
+
+    public abstract void ScoreGame();
 }
