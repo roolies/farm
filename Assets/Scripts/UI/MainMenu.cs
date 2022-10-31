@@ -11,14 +11,15 @@ public class MainMenu : MonoBehaviour
     private Button defaultBtn, ctrlBackBtn, creditBackBtn;
 
     [SerializeField]
-    private GameObject ctrlScreen, creditScreen;
+    private GameObject mainScreen, ctrlScreen, creditScreen;
 
     public MainMenu()
     {
         defaultBtn = null;
         ctrlBackBtn = null;
         creditBackBtn = null;
-
+        
+        mainScreen = null;
         ctrlScreen = null;
         creditScreen = null;
     }
@@ -54,5 +55,32 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+   public void SeeControls()
+    {
+        ctrlScreen.SetActive(true);
+        ctrlBackBtn.Select();
+
+        mainScreen.SetActive(false);
+        creditScreen.SetActive(false);
+
+    }
+    public void SeeCredits()
+    {
+        creditScreen.SetActive(true);
+        creditBackBtn.Select();
+
+        mainScreen.SetActive(false);
+        ctrlScreen.SetActive(false);
+
+    }
+    public void BackToMain()
+    {
+        mainScreen.SetActive(true);
+        defaultBtn.Select();
+
+        creditScreen.SetActive(false);
+        ctrlScreen.SetActive(false);
     }
 }
