@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class KitchenGame : MonoBehaviour
 {
+    public abstract int Score { get; set; }
+
     public abstract event EventHandler<int> gameOutput;
 
     public abstract void PlayGame();
