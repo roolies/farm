@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,15 +11,21 @@ using UnityEngine.UI;
 
 public class BasketGame : FarmGame
 {
-    public override string ingredientType { get; set; }
-    public override float initialGameTime { get; set; }
-    public override float gameTimer { get; set; }
-    public override int numCollected { get; set; }
-    public override PlayerData player { get; set; }
-
     void Start()
     {
         player = FindObjectOfType<PlayerData>();
+    }
+
+    private void Update()
+    {
+        if (gameTimer > 0)
+        {
+            gameTimer -= Time.deltaTime;
+        }
+        else
+        {
+            gameTimer = 0;
+        }
     }
 
     public override void PlayGame()
@@ -28,9 +36,12 @@ public class BasketGame : FarmGame
 
     public override IEnumerator Play()
     {
+        Debug.Log("is playing");
         Ingredients ingredient = ToIngredient(ingredientType);
 
         yield return new WaitWhile(() => gameTimer > 0);
+
+        player.Inventory[(int)ingredient] += numCollected;
 
         player.Inventory[(int)ingredient] += numCollected;
 
@@ -42,10 +53,11 @@ public class BasketGame : FarmGame
         numCollected++;
     }
 
-    public override void ScoreGame()
-    {   
-        gameTimer = initialGameTime;
+    public override void AddToInventory()
+    {
+        
     }
+
     private static Ingredients ToIngredient(string ingredientString)
     {
         return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.Unknown;
