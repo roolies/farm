@@ -167,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 1194756}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20645fe8b1aa54443a6204ec853989e5, type: 2}
+  m_Controller: {fileID: 9100000, guid: ec22aecd95d2aa04e92f4a5fb516db4a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1102,6 +1102,8 @@ MonoBehaviour:
   MiniGame2Toutched: 0
   TomatoToutched: 0
   AppleToutched: 0
+  FarmerSprite: {fileID: 0}
+  BasketSprite: {fileID: 0}
 --- !u!114 &2089678552
 MonoBehaviour:
   m_ObjectHideFlags: 0
