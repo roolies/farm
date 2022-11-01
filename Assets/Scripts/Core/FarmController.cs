@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class FarmController : MonoBehaviour
 {
-    private PlayerData PlayerData { get; set; }
     private GameObject Player { get; set; }
     private bool farmPhase { get; set; }
     public float timer { get; private set; }
@@ -19,7 +18,6 @@ public class FarmController : MonoBehaviour
         farmPhase = true;
         timer = timerStartValue;
         Player = GameObject.FindGameObjectWithTag("Player");
-        PlayerData = FindObjectOfType<PlayerData>();
     }
 
     void Update()

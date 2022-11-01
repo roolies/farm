@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         FarmArea.SetActive(true);
         Minigame1.SetActive(false);
         Minigame2.SetActive(false);
-        currentGame.ScoreGame();
+        
         currentGame = null;
         KillTrigger.SetActive(true);
 
