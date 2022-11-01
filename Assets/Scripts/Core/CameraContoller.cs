@@ -15,7 +15,7 @@ public class CameraContoller : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
-        playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
+        playerTransform = FindObjectOfType<NewPlayerController>().gameObject.transform;
         followingPlayer = true;
     }
 

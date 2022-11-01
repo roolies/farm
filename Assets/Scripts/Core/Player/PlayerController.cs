@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using FarmGame;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject KillTrigger;
 
     public GameObject FarmArea;
-    private CollectionGame currentGame = null;
+    private FarmGame currentGame = null;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -90,7 +89,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacted");
             Minigame1.SetActive(true);
             FarmArea.SetActive(false);
-            currentGame.StartMiniGame();
+            currentGame.PlayGame();
         }
 
         if (MiniGame2Toutched == true)
@@ -98,7 +97,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game 2 interacted");
             Minigame2.SetActive(true);
             FarmArea.SetActive(false);
-            currentGame.StartMiniGame();
+            currentGame.PlayGame();
             //NewCode
             rb.transform.position = MiniGame2Spawn.transform.position;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
@@ -124,7 +123,7 @@ public class PlayerController : MonoBehaviour
         FarmArea.SetActive(true);
         Minigame1.SetActive(false);
         Minigame2.SetActive(false);
-        currentGame.EndMiniGame();
+        currentGame.ScoreGame();
         currentGame = null;
         KillTrigger.SetActive(true);
 
@@ -160,14 +159,14 @@ public class PlayerController : MonoBehaviour
         {
             TriggerToutched = true;
             Debug.Log("MiniGame 1 toutched");
-            currentGame = collision.gameObject.GetComponent<CollectionGame>();
+            currentGame = collision.gameObject.GetComponent<FarmGame>();
         }
 
         if (collision.tag == "MiniGame2")
         {
             MiniGame2Toutched = true;
             Debug.Log("MiniGame 2 toutched");
-            currentGame = collision.gameObject.GetComponent<CollectionGame>();
+            currentGame = collision.gameObject.GetComponent<FarmGame>();
         }
 
 
@@ -234,7 +233,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        currentGame.AddIngredient();
+        
     }
 
 

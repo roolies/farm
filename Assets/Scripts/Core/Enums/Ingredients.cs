@@ -1,14 +1,12 @@
-﻿namespace  FarmGame
+﻿public enum Ingredients
 {
-    public enum Ingredients
-    {
-        Eggs = 0,
-        Tomatoes,
-        Carrots,
-        Turkey,
-        Pumpkins,
-        Apples,
-        Potatoes,
-        Unknown
-    }
+    Eggs = 0,
+    Tomatoes,
+    Carrots,
+    Turkey,
+    Pumpkins,
+    Apples,
+    Potatoes,
+    Unknown
 }
+

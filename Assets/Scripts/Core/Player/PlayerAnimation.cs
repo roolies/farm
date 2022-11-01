@@ -12,12 +12,12 @@ public class PlayerAnimation : MonoBehaviour
     void Awake()
     {
         player = GetComponent<Animator>();
-        _moveInput = playerController.GetComponent<PlayerController>().moveInput;
+        _moveInput = playerController.GetComponent<NewPlayerController>().moveInput;
     }
 
     void Update()
     {
-        _moveInput = playerController.GetComponent<PlayerController>().moveInput;
+        _moveInput = playerController.GetComponent<NewPlayerController>().moveInput;
 
         CheckDirection();
 

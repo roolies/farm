@@ -1,4 +1,3 @@
-using FarmGame;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ public class KitchenController : MonoBehaviour
 
     private CameraContoller CamController { get; set; }
 
-    private GameController GameController { get; set; }
+    private FarmController FarmController { get; set; }
 
     private int DishScore { get; set; }
 
@@ -28,13 +27,14 @@ public class KitchenController : MonoBehaviour
     [SerializeField] GameObject recipeResult;
     [SerializeField] GameObject finalResult;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] Text inventoryText;
 
     private void Start()
     {
         GamesToPlay = new List<KitchenGame>();
         PlayerData = FindObjectOfType<PlayerData>();
         CamController = FindObjectOfType<CameraContoller>();
-        GameController = FindObjectOfType<GameController>();
+        FarmController = FindObjectOfType<FarmController>();
         PlayerData.Inventory[(int)Ingredients.Potatoes] = 6;
     }
 
@@ -74,31 +74,31 @@ public class KitchenController : MonoBehaviour
         foreach(KitchenGame game in GamesToPlay)
         {
             Ping = false;
-            game.gameOutput += SendDishScore;
+            game.gameOutput += AddDishScore;
             CamController.gameTransform = game.gameObject.transform;
             CamController.followingPlayer = false;
             game.PlayGame();
             yield return new WaitUntil(() => Ping);
-            game.gameOutput -= SendDishScore;
+            game.gameOutput -= AddDishScore;
         }
         AddToTotal();
         recipeResult.SetActive(true);
         currentScreen = recipeResult;
         yield return new WaitForSeconds(5f);
-        if(IsGameOver())
+        if(IsGameOver() || FarmController.timer <= 0)
         {
             GameOver();
         }
         else
         {
             ToHome();
-            GameController.inventoryText.text = GameController.ListInventory();
+            inventoryText.text = PlayerData.ListInventory();
         }
         GamesToPlay.Clear();
         yield break;
     }
 
-    void SendDishScore(object sender, int score)
+    void AddDishScore(object sender, int score)
     {
         DishScore += score;
         Ping = true;

@@ -1,10 +1,7 @@
-namespace FarmGame
+public enum Recipes
 {
-    public enum Recipes
-    {
-        PumpkinPie = 0,
-        MashedPotatoes,
-        RoastTurkey,
-        Unknown
-    }
+    PumpkinPie = 0,
+    MashedPotatoes,
+    RoastTurkey,
+    Unknown
 }
