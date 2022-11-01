@@ -2,16 +2,19 @@ using FarmGame;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class KitchenController : MonoBehaviour
 {
-    private List<KitchenGame> gamesToPlay { get; set; }
+    private List<KitchenGame> GamesToPlay { get; set; }
 
-    private PlayerData playerData { get; set; } = FindObjectOfType<PlayerData>();
+    private PlayerData PlayerData { get; set; }
 
-    private CameraContoller camController { get; set; } = FindObjectOfType<CameraContoller>();
+    private CameraContoller CamController { get; set; }
+
+    private GameController GameController { get; set; }
 
     private int DishScore { get; set; }
 
@@ -24,7 +27,17 @@ public class KitchenController : MonoBehaviour
     [SerializeField] GameObject kitchenHome;
     [SerializeField] GameObject recipeResult;
     [SerializeField] GameObject finalResult;
-    
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    private void Start()
+    {
+        GamesToPlay = new List<KitchenGame>();
+        PlayerData = FindObjectOfType<PlayerData>();
+        CamController = FindObjectOfType<CameraContoller>();
+        GameController = FindObjectOfType<GameController>();
+        PlayerData.Inventory[(int)Ingredients.Potatoes] = 6;
+    }
+
     public void CookRecipe(string input)
     {
         Recipes recipe = ToRecipe(input);
@@ -35,7 +48,7 @@ public class KitchenController : MonoBehaviour
             case Recipes.MashedPotatoes:
                 if(CanCook(Ingredients.Potatoes, 3))
                 {
-                    gamesToPlay.Add(FindObjectOfType<MixingGame>());
+                    GamesToPlay.Add(FindObjectOfType<MixingGame>());
                 }
                 else
                 {
@@ -49,7 +62,7 @@ public class KitchenController : MonoBehaviour
                 break;
         }
 
-        if(gamesToPlay.Count > 0)
+        if(GamesToPlay.Count > 0)
         {
             StartCoroutine(PlayGames());
         }
@@ -58,14 +71,15 @@ public class KitchenController : MonoBehaviour
     IEnumerator PlayGames()
     {
         kitchenHome.SetActive(false);
-        foreach(KitchenGame game in gamesToPlay)
+        foreach(KitchenGame game in GamesToPlay)
         {
             Ping = false;
             game.gameOutput += SendDishScore;
-            camController.gameTransform = game.gameObject.transform;
-            camController.FocusOnGame();
+            CamController.gameTransform = game.gameObject.transform;
+            CamController.followingPlayer = false;
             game.PlayGame();
             yield return new WaitUntil(() => Ping);
+            game.gameOutput -= SendDishScore;
         }
         AddToTotal();
         recipeResult.SetActive(true);
@@ -78,8 +92,9 @@ public class KitchenController : MonoBehaviour
         else
         {
             ToHome();
+            GameController.inventoryText.text = GameController.ListInventory();
         }
-        gamesToPlay.Clear();
+        GamesToPlay.Clear();
         yield break;
     }
 
@@ -105,7 +120,7 @@ public class KitchenController : MonoBehaviour
     bool CanCook(Ingredients ingredientNeeded, int amountNeeded)
     {
         bool result = false;
-        int[] inventory = playerData.Inventory;
+        var inventory = PlayerData.Inventory;
         for(int i = 0; i < inventory.Length; i++)
         {
             if(i == (int)ingredientNeeded && inventory[i] >= amountNeeded)
@@ -120,7 +135,7 @@ public class KitchenController : MonoBehaviour
     bool IsGameOver()
     {
         bool result = true;
-        int[] inventory = playerData.Inventory;
+        int[] inventory = PlayerData.Inventory;
         for (int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i] >= 1)
@@ -135,6 +150,7 @@ public class KitchenController : MonoBehaviour
     {
         currentScreen.SetActive(false);
         finalResult.SetActive(true);
+        scoreText.text = $"Score: {TotalScore}";
     }
 
     private static Recipes ToRecipe(string recipeString)

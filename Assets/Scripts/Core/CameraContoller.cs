@@ -10,7 +10,7 @@ public class CameraContoller : MonoBehaviour
     private Transform playerTransform { get; set; }
     public Transform gameTransform { get; set; }
     private Camera cam { get; set;}
-    private bool followingPlayer { get; set;}
+    public bool followingPlayer { get; set;}
 
     private void Start()
     {
@@ -33,13 +33,13 @@ public class CameraContoller : MonoBehaviour
 
     public void FocusOnPlayer()
     {
-        this.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -2f);
+        this.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -35f);
         cam.orthographicSize = playerCamSize;
     }
 
     public void FocusOnGame()
     {
-        this.transform.position = new Vector3(gameTransform.position.x, gameTransform.position.y, -2f);
+        this.transform.position = new Vector3(gameTransform.position.x, gameTransform.position.y, -35f);
         cam.orthographicSize = gameCamSize;
     }
 }
