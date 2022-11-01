@@ -461,8 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842da5dc053eee84d96f7c4c96dd0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientType: apples
-  initialGameTime: 300
 --- !u!1 &189368353
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,8 +622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842da5dc053eee84d96f7c4c96dd0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientType: Turkey
-  initialGameTime: 300
 --- !u!61 &257964364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21724,7 +21720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: e46b3be9f5465f2448ab1c76c90a3d8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class MixingGame : KitchenGame
 {
+    public override int Score { get; set; }
+
     public override event EventHandler<int> gameOutput;
-
-    KitchenController controller { get; set; }
-
-    private void Start()
-    {
-        controller = FindObjectOfType<KitchenController>();
-    }
 
     public override void PlayGame()
     {
@@ -23,6 +18,8 @@ public class MixingGame : KitchenGame
     {
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
 
+        Score = 10;
+
         ScoreGame();
         
         yield break;
@@ -30,6 +27,6 @@ public class MixingGame : KitchenGame
 
     public override void ScoreGame()
     {
-        gameOutput?.Invoke(this, 10);
+        gameOutput?.Invoke(this, Score);
     }
 }
