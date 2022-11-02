@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static int score { get; private set; }
+    public static int score;
     public float timer { get; private set; }
 
     [SerializeField] private float timerStartValue;
@@ -33,6 +33,6 @@ public class GameController : MonoBehaviour
 
     private void EndGame()
     {
-        SceneManager.LoadScene("WinScreen");
+        //SceneManager.LoadScene("WinScreen");
     }
 }

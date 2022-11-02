@@ -10,10 +10,10 @@ public abstract class FarmGame : MonoBehaviour
     public float initialGameTime;
 
     public GameObject player;
-    public float gameTimer { get; set; }
-    public int Score { get; set; }
+    public GameObject accessPoint;
 
-    public abstract event EventHandler<int> gameOutput;
+    public float gameTimer { get; set; }
+    public int Score;
 
     public abstract void PlayGame();
 

@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 9153243912030627095}
   - component: {fileID: 9153243912030627094}
   m_Layer: 0
-  m_Name: Basket Sprite PlaceHolder
+  m_Name: Basket Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,9 +144,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9153243912030627081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9153243912859264267}
   m_RootOrder: -1
@@ -192,7 +192,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef8e0d253ede604469cc5e964e96e283, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -213,10 +213,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9153243912859264267}
   - component: {fileID: 9153243912859264269}
-  - component: {fileID: 9153243912859264268}
   - component: {fileID: 9153243912859264278}
   - component: {fileID: 9153243912859264265}
   - component: {fileID: 9153243912859264264}
+  - component: {fileID: 1518648140}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -231,15 +231,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9153243912859264271}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13349998, y: 2.66, z: 0}
-  m_LocalScale: {x: 1.05, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13349998, y: 2.66, z: -0.1}
+  m_LocalScale: {x: 1, y: 0.952381, z: 0.952381}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9153243911788789858}
   - {fileID: 9153243912030627095}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9153243912859264269
 MonoBehaviour:
@@ -271,31 +271,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &9153243912859264268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153243912859264271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c140aaf87541e4bbd10ed28f2496b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  moveInput: {x: 0, y: 0}
-  Minigame1: {fileID: 0}
-  Minigame2: {fileID: 0}
-  KillTrigger: {fileID: 0}
-  FarmArea: {fileID: 0}
-  playerInput: {fileID: 9153243912859264269}
-  TriggerToutched: 0
-  MiniGame2Toutched: 0
-  TomatoToutched: 0
-  AppleToutched: 0
-  FarmerSprite: {fileID: 9153243911788789861}
-  BasketSprite: {fileID: 9153243912030627081}
 --- !u!114 &9153243912859264278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,3 +320,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1518648140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153243912859264271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58163903f96aa641be09cf3f44ba05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveInput: {x: 0, y: 0}

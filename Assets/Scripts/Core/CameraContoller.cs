@@ -8,9 +8,9 @@ public class CameraContoller : MonoBehaviour
     [SerializeField] int gameCamSize;
 
     private Transform playerTransform { get; set; }
-    public Transform gameTransform { get; set; }
+    public static Transform gameTransform { get; set; }
     private Camera cam { get; set;}
-    public bool followingPlayer { get; set;}
+    public static bool followingPlayer { get; set;}
 
     private void Start()
     {

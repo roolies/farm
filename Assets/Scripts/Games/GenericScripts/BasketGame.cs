@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 public class BasketGame : FarmGame
 {
-    public override event EventHandler<int> gameOutput;
-
-    
-
+    public GameObject farmerSprite;
+    public GameObject basketSprite;
+    public GameObject playerSpawn;
+    public GameObject coop;
 
     private void Awake()
     {
@@ -40,31 +40,39 @@ public class BasketGame : FarmGame
     {
         SetUpGame();
 
-        
-        
-        //Ingredients ingredient = ToIngredient(ingredientType);
-
         yield return new WaitWhile(() => gameTimer > 0);
 
         ScoreGame();
 
         yield break;
     }
+    public void SetUpGame()
+    {
+        CameraContoller.gameTransform = this.transform;
+        CameraContoller.followingPlayer = false;
+        gameTimer = initialGameTime;
+        player.transform.position = new Vector3(playerSpawn.transform.position.x, playerSpawn.transform.position.y, -0.1f);
+        player.transform.localScale = new Vector3(2, 2, 2);
+        player.GetComponent<CapsuleCollider2D>().size = new Vector2(2, 2);
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        farmerSprite.SetActive(false);
+        basketSprite.SetActive(true);
+        player.GetComponent<Rigidbody2D>().gravityScale = 20;
+        coop.SetActive(true);
+    }
 
     public override void ScoreGame()
     {
-        gameOutput?.Invoke(this, Score);
+        CameraContoller.followingPlayer = true;
+        player.transform.position = new Vector3(accessPoint.transform.position.x, accessPoint.transform.position.y, -0.1f);
+        player.transform.localScale = new Vector3(1, 1, 1);
+        player.GetComponent<CapsuleCollider2D>().size = new Vector2(1, 2);
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        farmerSprite.SetActive(true);
+        basketSprite.SetActive(false);
+        player.GetComponent<Rigidbody2D>().gravityScale = 0;
+        coop.SetActive(false);
+        GameController.score += Score;
+        Debug.Log($"Total: {GameController.score}");
     }
-
-    public void SetUpGame()
-    {
-        gameTimer = initialGameTime;
-        Vector2 playerPos = player.transform.position;
-        playerPos = this.transform.position;
-    }
-
-    //private static Ingredients ToIngredient(string ingredientString)
-    //{
-    //    return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.Unknown;
-    //}
 }
