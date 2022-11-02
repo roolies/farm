@@ -33,6 +33,6 @@ public class GameController : MonoBehaviour
 
     private void EndGame()
     {
-        //SceneManager.LoadScene("WinScreen");
+        SceneManager.LoadScene("WinScreen");
     }
 }
