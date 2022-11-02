@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChrisTesting.unity
     guid: dd1eb853441e6aa47b092b23e4e086af
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: e0f0b47eb645e844ba4f62936568b528
   m_configObjects: {}
