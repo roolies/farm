@@ -5,12 +5,13 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public FarmGame game;
+    public int value;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            game.Score++;
+            GameController.score += value;
             Destroy(gameObject);
         }
     }

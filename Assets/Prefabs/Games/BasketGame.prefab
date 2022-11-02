@@ -654,7 +654,7 @@ MonoBehaviour:
   initialGameTime: 10
   player: {fileID: 0}
   accessPoint: {fileID: 0}
-  Score: 8
+  Score: 0
   farmerSprite: {fileID: 0}
   basketSprite: {fileID: 0}
   playerSpawn: {fileID: 645536741}

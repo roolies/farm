@@ -150,3 +150,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 2733077732919417784, guid: 46c987cae0c919a4e87d74dcb4e99f5c, type: 3}
+  value: 1

@@ -8,8 +8,10 @@ public class AnimalRoam : MonoBehaviour
     float speed;
     [SerializeField]
     float range;
-    [SerializeField]
-    float maxDistance;
+
+    public Transform bottomLeft;
+
+    public Transform topRight;
 
     Vector2 wayPoint;
 
@@ -32,6 +34,6 @@ public class AnimalRoam : MonoBehaviour
 
     void SetNewDestination()
     {
-        wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance), Random.Range(-maxDistance, maxDistance));
+        wayPoint = new Vector2(Random.Range(bottomLeft.position.x, topRight.position.x), Random.Range(bottomLeft.position.y, topRight.position.y));
     }
 }
