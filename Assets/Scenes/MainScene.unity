@@ -1120,10 +1120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9d7ad4108630b44b9004decc44d9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerStartValue: 60
-  timerText: {fileID: 271151518}
-  inventoryText: {fileID: 1390249485}
-  kitchenHUD: {fileID: 0}
 --- !u!4 &362715104
 Transform:
   m_ObjectHideFlags: 0
@@ -1362,6 +1358,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientType: Turkey
   initialGameTime: 10
+  player: {fileID: 0}
+  accessPoint: {fileID: 0}
+  Score: 0
+  farmerSprite: {fileID: 0}
+  basketSprite: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  coop: {fileID: 0}
 --- !u!1 &408533916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,10 +1426,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.30588236}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.7169812, g: 0.29362565, b: 0.12445709, a: 1}
+    m_SelectedColor: {r: 0.8867924, g: 0.44412404, b: 0.011712307, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1442,7 +1445,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 408533919}
+  m_TargetGraphic: {fileID: 425200938}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1477,7 +1480,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408533916}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1856,6 +1859,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientType: Pumpkins
   initialGameTime: 10
+  player: {fileID: 0}
+  accessPoint: {fileID: 0}
+  Score: 0
+  farmerSprite: {fileID: 0}
+  basketSprite: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  coop: {fileID: 0}
 --- !u!1 &585518181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6948,10 +6958,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.30588236}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.7169812, g: 0.29362565, b: 0.12445709, a: 1}
+    m_SelectedColor: {r: 0.8867924, g: 0.44412404, b: 0.011712307, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6967,7 +6977,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2000066305}
+  m_TargetGraphic: {fileID: 585518183}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7002,7 +7012,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000066302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7094,10 +7104,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.30588236}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.7169812, g: 0.29362565, b: 0.12445709, a: 1}
+    m_SelectedColor: {r: 0.8867924, g: 0.44412404, b: 0.011712307, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7113,7 +7123,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2064527204}
+  m_TargetGraphic: {fileID: 1103618316}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7148,7 +7158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064527201}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
