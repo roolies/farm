@@ -139,8 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   range: 0.1
-  bottomLeft: {fileID: 6422155129048272714, guid: 76a59053545186b4da0ee0b462af9f54, type: 3}
-  topRight: {fileID: 4408902967164306076, guid: f1952c4c7ae6c02469c3039bfbdbba01, type: 3}
+  bottomLeft: {fileID: 7879914928870192812, guid: 76a59053545186b4da0ee0b462af9f54, type: 3}
+  topRight: {fileID: 6241469473557770238, guid: f1952c4c7ae6c02469c3039bfbdbba01, type: 3}
 --- !u!114 &1055360786741740722
 MonoBehaviour:
   m_ObjectHideFlags: 0
