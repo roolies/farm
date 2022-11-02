@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MixingGame : KitchenGame
 {
-    public override int Score { get; set; }
+   
 
     public override event EventHandler<int> gameOutput;
 

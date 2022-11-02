@@ -6,14 +6,18 @@ using UnityEngine;
 public abstract class FarmGame : MonoBehaviour
 {
     public string ingredientType;
+
     public float initialGameTime;
+
+    public GameObject player;
     public float gameTimer { get; set; }
-    public int numCollected { get; set; }
-    public PlayerData player { get; set; }
+    public int Score { get; set; }
+
+    public abstract event EventHandler<int> gameOutput;
 
     public abstract void PlayGame();
 
     public abstract IEnumerator Play();
 
-    public abstract void AddToInventory();
+    public abstract void ScoreGame();
 }

@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 
 
 public class BasketGame : FarmGame
 {
-    void Start()
+    public override event EventHandler<int> gameOutput;
+
+    
+
+
+    private void Awake()
     {
-        player = FindObjectOfType<PlayerData>();
+        player = FindObjectOfType<NewPlayerController>().gameObject;
     }
 
     private void Update()
@@ -31,35 +34,37 @@ public class BasketGame : FarmGame
     public override void PlayGame()
     {
         StartCoroutine(Play());
-        gameTimer = initialGameTime;
     }
 
     public override IEnumerator Play()
     {
-        Debug.Log("is playing");
-        Ingredients ingredient = ToIngredient(ingredientType);
+        SetUpGame();
+
+        
+        
+        //Ingredients ingredient = ToIngredient(ingredientType);
 
         yield return new WaitWhile(() => gameTimer > 0);
 
-        player.Inventory[(int)ingredient] += numCollected;
-
-        player.Inventory[(int)ingredient] += numCollected;
+        ScoreGame();
 
         yield break;
     }
 
-    public void AddIngredient()
+    public override void ScoreGame()
     {
-        numCollected++;
+        gameOutput?.Invoke(this, Score);
     }
 
-    public override void AddToInventory()
+    public void SetUpGame()
     {
-        
+        gameTimer = initialGameTime;
+        Vector2 playerPos = player.transform.position;
+        playerPos = this.transform.position;
     }
 
-    private static Ingredients ToIngredient(string ingredientString)
-    {
-        return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.Unknown;
-    }
+    //private static Ingredients ToIngredient(string ingredientString)
+    //{
+    //    return Enum.TryParse<Ingredients>(ingredientString, true, out Ingredients ingredient) ? ingredient : Ingredients.Unknown;
+    //}
 }
